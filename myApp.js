@@ -4,7 +4,7 @@ let app = express();
 let message = "Hello World";
 console.log(message);
 
-app.get('/server.js', (req, res) => {
+app.get('/', (req, res) => {
 
     res.send("Hello Express");
 
