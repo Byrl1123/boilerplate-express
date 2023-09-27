@@ -4,12 +4,17 @@ let app = express();
 let message = "Hello World";
 console.log(message);
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
+// 
+//     res.send("Hello Express");
+// 
+// });
 
-    res.send("Hello Express");
+app.get('/', (req, res) =>{
+
+    res.sendFile(__dirname +'/views/index.html');
 
 });
-
 
 
 
