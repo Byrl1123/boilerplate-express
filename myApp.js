@@ -4,6 +4,8 @@ let app = express();
 let message = "Hello World";
 console.log(message);
 
+let response = "Hello Wordl".toUpperCase();
+
 // app.get('/', (req, res) => {
 // 
 //     res.send("Hello Express");
@@ -25,12 +27,15 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.get('/json', (req, res) => {
         res.json(
-            {
-                "message": "Hello json"
-        }
+            {"message": "Hello json"}
         );
     });
 
+    if (process.env.VAR_NAME === "allCaps") {
+        response = "Hello World".toUpperCase();
+      } else {
+        response = "Hello World";
+      }
 
 
 
