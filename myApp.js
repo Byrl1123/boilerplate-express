@@ -45,6 +45,7 @@ app.use( gettingFunction = (req, res, next) => {
     console.log("logger middleware works!... I think.");
     let string = req.method + " " + req.path + " - " +  req.ip;
     next();
+    console.log("Hello Express");
 });
 
 
