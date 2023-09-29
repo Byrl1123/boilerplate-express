@@ -25,6 +25,11 @@ app.use(express.static(__dirname + "/public"));
 // Assets at the /public route
 app.use("/public", express.static(__dirname + "/public"));
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path} ${req.ip}`);
+    next();
+});
+
 
 // app.get('/json', (req, res) => {
 //     res.json(
@@ -41,11 +46,7 @@ app.get('/json', (req, res) => {
     
 });
 
-app.use( gettingFunction = (req, res, next) => {
-    console.log("logger middleware works!... I think.");
-    let string = req.method + " " + req.path + " - " +  req.ip;
-    next();
-});
+
 
 app.get("/", (req, res) => {
     res.send("Hello Express");
