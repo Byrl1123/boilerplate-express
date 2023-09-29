@@ -4,7 +4,7 @@ let app = express();
 let message = "Hello World";
 console.log(message);
 
-let response = "Hello Wordl".toUpperCase();
+let response = "Hello json";
 
 // app.get('/', (req, res) => {
 // 
@@ -25,19 +25,27 @@ app.use(express.static(__dirname + "/public"));
 // Assets at the /public route
 app.use("/public", express.static(__dirname + "/public"));
 
+
+// app.get('/json', (req, res) => {
+//     res.json(
+//         {"message": "Hello json"}
+//     );
+// });
+
 app.get('/json', (req, res) => {
-        res.json(
-            {"message": "Hello json"}
-        );
-    });
-
-    if (process.env.VAR_NAME === "allCaps") {
-        response = "Hello World".toUpperCase();
+    if (process.env['MESSAGE_STYLE'] === "uppercase") {
+        response = "Hello JSON".toUpperCase();
       } else {
-        response = "Hello World";
+        response = "Hello json";
       }
+    
+});
 
-
+app.use( gettingFunction = (req, res, next) => {
+    console.log("logger middleware works!... I think.");
+    let string = req.method + " " + req.path + " - " +  req.ip;
+    next();
+});
 
 
 
