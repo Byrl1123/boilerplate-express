@@ -1,10 +1,18 @@
 let express = require('express');
 let app = express();
 
+// implementing a Root-Level request Logger Middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} ${req.ip}`);
+  next();
+});
+
 let message = "Hello World";
 console.log(message);
 
 let response = "Hello json";
+
+
 
 // app.get('/', (req, res) => {
 // 
@@ -19,16 +27,14 @@ app.get('/', (req, res) =>{
 });
 
 
+
 // Normal usage
 app.use(express.static(__dirname + "/public"));
 
 // Assets at the /public route
 app.use("/public", express.static(__dirname + "/public"));
 
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.path} ${req.ip}`);
-    next();
-});
+
 
 
 // app.get('/json', (req, res) => {
